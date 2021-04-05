@@ -1,0 +1,118 @@
+﻿@model QuanLyTinTuc.Models.News
+@{
+    ViewBag.Title = "Upload";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="@Url.Content(" ~/Scripts/jquery-1.10.2.min.js ")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#Apply').prop('disabled', true);
+            $("#Resume").change(function() {
+                // Get uploaded file extension
+                var extension = $(this).val().split('.').pop().toLowerCase();
+                // Create array with the files extensions that we wish to upload
+                var validFileExtensions = ['doc', 'docx', 'pdf'];
+                //Check file extension in the array.if -1 that means the file extension is not in the list.
+                if ($.inArray(extension, validFileExtensions) == -1) {
+                    alert("Chỉ được upload file 'doc', 'docx', 'pdf' ")
+                    // Clear fileuload control selected file
+                    $(this).replaceWith($(this).val('').clone(true));
+                    //Disable Submit Button
+                    $('#Apply').prop('disabled', true);
+                } else {
+                    // Check and restrict the file size to 128 KB.
+                    if ($(this).get(0).files[0].size > (131072)) {
+                        alert("Rất tiếc! Kích thước tối đa của tệp là 128kb");
+                        // Clear fileuload control selected file
+                        $(this).replaceWith($(this).val('').clone(true));
+                        //Disable Submit Button
+                        $('#Apply').prop('disabled', true);
+                    } else {
+                        //Enable Submit Button
+                        $('#Apply').prop('disabled', false);
+                    }
+                }
+            });
+            $("#Apply").click(function() {
+                if ($("#MaTinTuc").val() = null || $("#MaTheLoai").val() || $("#TieuDe").val() || $("#MoTaNgan").val() || $("#NguoiDangBai").val() || $("#LinkFile").val()) {
+                    alert("Nhung cho co dau (*) la thong tin bat buoc");
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 15px;
+        }
+
+        thead {
+            background-color: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="~/FileListHistory/ListHistory" role="button">Xem lich su dang bai</a>
+        <button role="button" onclick="window.location.href='~/FileListHistory/ListHistory';"></button>
+    </div>
+    <div>
+        @using (Html.BeginForm("Upload", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {<br />
+         <table cellpadding="5">
+             <thead>
+                 <tr>
+                     <td colspan="2" style="text-align:center">Đăng Bài</td>
+                 </tr>
+             </thead>
+             <tr>
+                 <td colspan="2"> Những chỗ có dấu <span style="color:red">(*)</span> là bắt buộc </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.MaTinTuc)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.MaTinTuc, new { maxlength = 25 }) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.MaTheLoai)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.MaTheLoai) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.MaLoaiTin)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.MaLoaiTin) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.TieuDe)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.TieuDe) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.MoTaNgan)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.MoTaNgan) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.NguoiDangBai)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.NguoiDangBai) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.LinkFile)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.LinkFile, new { type = "file" }) </td>
+             </tr>
+             <tr>
+                 <td colspan="2" style="text-align:right"> <input type="submit" id="Apply" value="Apply" /> </td>
+             </tr>
+         </table>}
+    </div>
+</body>
+
+</html>
+

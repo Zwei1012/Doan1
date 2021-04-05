@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebTinTucModelStoreContainer" CdmEntityContainer="WebTinTucEntities">
+    <EntitySetMapping Name="DANGTINTUCs">
+      <EntityTypeMapping TypeName="WebTinTucModel.DANGTINTUC">
+        <MappingFragment StoreEntitySet="DANGTINTUC">
+          <ScalarProperty Name="MaDangTin" ColumnName="MaDangTin" />
+          <ScalarProperty Name="ThoiGianDang" ColumnName="ThoiGianDang" />
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DUYETTINTUCs">
+      <EntityTypeMapping TypeName="WebTinTucModel.DUYETTINTUC">
+        <MappingFragment StoreEntitySet="DUYETTINTUC">
+          <ScalarProperty Name="MaDuyetTin" ColumnName="MaDuyetTin" />
+          <ScalarProperty Name="ThoiGianDuyet" ColumnName="ThoiGianDuyet" />
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="NgayDuocDang" ColumnName="NgayDuocDang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HINHs">
+      <EntityTypeMapping TypeName="WebTinTucModel.HINH">
+        <MappingFragment StoreEntitySet="HINH">
+          <ScalarProperty Name="IDHinh" ColumnName="IDHinh" />
+          <ScalarProperty Name="Hinh1" ColumnName="Hinh" />
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAITINs">
+      <EntityTypeMapping TypeName="WebTinTucModel.LOAITIN">
+        <MappingFragment StoreEntitySet="LOAITIN">
+          <ScalarProperty Name="MaLoaiTin" ColumnName="MaLoaiTin" />
+          <ScalarProperty Name="TenLoaiTin" ColumnName="TenLoaiTin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUATINs">
+      <EntityTypeMapping TypeName="WebTinTucModel.SUATIN">
+        <MappingFragment StoreEntitySet="SUATIN">
+          <ScalarProperty Name="MaSuaTin" ColumnName="MaSuaTin" />
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+          <ScalarProperty Name="ThoiGianSua" ColumnName="ThoiGianSua" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LinkFile" ColumnName="LinkFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WebTinTucModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="WebTinTucModel.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LoaiTaiKhoan" ColumnName="LoaiTaiKhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THELOAIs">
+      <EntityTypeMapping TypeName="WebTinTucModel.THELOAI">
+        <MappingFragment StoreEntitySet="THELOAI">
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TINTUCs">
+      <EntityTypeMapping TypeName="WebTinTucModel.TINTUC">
+        <MappingFragment StoreEntitySet="TINTUC">
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="MoTaNgan" ColumnName="MoTaNgan" />
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="MaLoaiTIn" ColumnName="MaLoaiTIn" />
+          <ScalarProperty Name="NguoiDangBai" ColumnName="NguoiDangBai" />
+          <ScalarProperty Name="LinkFile" ColumnName="LinkFile" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUKHOAs">
+      <EntityTypeMapping TypeName="WebTinTucModel.TUKHOA">
+        <MappingFragment StoreEntitySet="TUKHOA">
+          <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+          <ScalarProperty Name="TuKhoa1" ColumnName="TuKhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

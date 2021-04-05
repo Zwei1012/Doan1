@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebTinTucModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DANGTINTUC">
+    <Key>
+      <PropertyRef Name="MaDangTin" />
+    </Key>
+    <Property Name="MaDangTin" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ThoiGianDang" Type="datetime" Nullable="false" />
+    <Property Name="MaTinTuc" Type="int" Nullable="false" />
+    <Property Name="ID" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DUYETTINTUC">
+    <Key>
+      <PropertyRef Name="MaDuyetTin" />
+    </Key>
+    <Property Name="MaDuyetTin" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ThoiGianDuyet" Type="datetime" Nullable="false" />
+    <Property Name="MaTinTuc" Type="int" Nullable="false" />
+    <Property Name="TrangThai" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayDuocDang" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HINH">
+    <Key>
+      <PropertyRef Name="IDHinh" />
+    </Key>
+    <Property Name="IDHinh" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Hinh" Type="nchar" MaxLength="70" Nullable="false" />
+    <Property Name="MaTinTuc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOAITIN">
+    <Key>
+      <PropertyRef Name="MaLoaiTin" />
+    </Key>
+    <Property Name="MaLoaiTin" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLoaiTin" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUATIN">
+    <Key>
+      <PropertyRef Name="MaSuaTin" />
+    </Key>
+    <Property Name="MaSuaTin" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaTinTuc" Type="int" Nullable="false" />
+    <Property Name="ThoiGianSua" Type="datetime" Nullable="false" />
+    <Property Name="ID" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="LinkFile" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="HoTen" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="LoaiTaiKhoan" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="MaTheLoai" />
+    </Key>
+    <Property Name="MaTheLoai" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenTheLoai" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TINTUC">
+    <Key>
+      <PropertyRef Name="MaTinTuc" />
+    </Key>
+    <Property Name="MaTinTuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="200" />
+    <Property Name="MoTaNgan" Type="nvarchar" MaxLength="200" />
+    <Property Name="MaTheLoai" Type="nvarchar(max)" />
+    <Property Name="MaLoaiTIn" Type="nvarchar" MaxLength="200" />
+    <Property Name="NguoiDangBai" Type="nvarchar" MaxLength="200" />
+    <Property Name="LinkFile" Type="nvarchar" MaxLength="300" />
+    <Property Name="NgayDang" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebTinTuc.dbo.TUKHOA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TUKHOA">
+    <Key>
+      <PropertyRef Name="MaTinTuc" />
+      <PropertyRef Name="TuKhoa" />
+    </Key>
+    <Property Name="MaTinTuc" Type="int" Nullable="false" />
+    <Property Name="TuKhoa" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DANGTINTUC_TAIKHOAN">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="1" />
+    <End Role="DANGTINTUC" Type="Self.DANGTINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DANGTINTUC">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUATIN_TAIKHOAN">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="1" />
+    <End Role="SUATIN" Type="Self.SUATIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SUATIN">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebTinTucModelStoreContainer">
+    <EntitySet Name="DANGTINTUC" EntityType="Self.DANGTINTUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DUYETTINTUC" EntityType="Self.DUYETTINTUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HINH" EntityType="Self.HINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAITIN" EntityType="Self.LOAITIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUATIN" EntityType="Self.SUATIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TINTUC" EntityType="Self.TINTUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TUKHOA" EntityType="Self.TUKHOA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TUKHOA].[MaTinTuc] AS [MaTinTuc], 
+    [TUKHOA].[TuKhoa] AS [TuKhoa]
+    FROM [dbo].[TUKHOA] AS [TUKHOA]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DANGTINTUC_TAIKHOAN" Association="Self.FK_DANGTINTUC_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+      <End Role="DANGTINTUC" EntitySet="DANGTINTUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUATIN_TAIKHOAN" Association="Self.FK_SUATIN_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+      <End Role="SUATIN" EntitySet="SUATIN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
